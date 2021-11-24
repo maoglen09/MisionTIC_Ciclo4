@@ -1,7 +1,8 @@
-const calcularIMC = async (peso,estatura) => {
-    let response = await fetch("https://misiontic2022upb.vercel.app/api/calculate-your-body-mass-index/limits");
-    let limits = await response.json();
+const calcularIMC = (peso,estatura) =>{
+    
     let IMC = {};
+    let peso2 = peso.toString();
+    let estatura2 = (estatura**2).toString();
 
     if (peso == 0 || estatura == 0){
         IMC = {formula:0}
@@ -14,24 +15,23 @@ const calcularIMC = async (peso,estatura) => {
     return IMC;
 }
 
-const registrarIMC = async (value) =>{
-    let response = await fetch("https://misiontic2022upb.vercel.app/api/calculate-your-body-mass-index/imc-ranges");
-    let rangosIMC = await response.json();
+const registrarIMC = (value) =>{
 
     let registroIMC;
+    let pertenece = [];
 
     rangosIMC.forEach(myFunction);
 
     function myFunction(item,index){
         if (value >= item.de && value <= item.hasta){
-            response[index] = true
+            pertenece[index] = true
         }
         else{
-            response[index] = false;
+            pertenece[index] = false;
         }
     }
 
-    index = response.indexOf(true);
+    index = pertenece.indexOf(true);
     if (index == -1){
         registroIMC = "fuera_de_rango";
     }
@@ -45,3 +45,10 @@ const registrarIMC = async (value) =>{
 
 module.exports.registrarIMC = registrarIMC;
 module.exports.calcularIMC = calcularIMC;
+
+global.rangosIMC = [
+    {etiqueta: 'Bajo peso', de: 0, hasta:18.5},
+    {etiqueta: 'Normal', de: 18.6, hasta:24.9},
+    {etiqueta: 'Sobrepeso', de: 25, hasta:29.9},
+    {etiqueta: 'Obesidad', de: 30, hasta:50}
+]
