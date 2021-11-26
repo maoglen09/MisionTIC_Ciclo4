@@ -23,7 +23,7 @@ const registrarIMC = async (value) =>{
     let pertenece = [];
     let registroIMC;
 
-    // Se evalúa si el IMC se encuentra entre los rangos establecidos
+    // Se recorre el arreglo para evaluar si el IMC se encuentra entre los rangos establecidos
     rangosIMC.forEach(myFunction);
     function myFunction(item,index){
         if (value >= item.de && value <= item.hasta){
