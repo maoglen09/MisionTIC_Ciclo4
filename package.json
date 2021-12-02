@@ -1,0 +1,14 @@
+{
+  "name": "sprint_4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/src.js",
+  "scripts": {
+    "start": "node src/src.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
