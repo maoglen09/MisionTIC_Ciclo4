@@ -1,24 +1,23 @@
 const frutasProteina = async() => {
-    let response = await fetch("https://www.fruityvice.com/api/fruit/all");
-    let proteinas = await response.json();
-    let pertenece = [];
-    let frutasProteina;
+    // Se obtiene la información de la url
+    let response = await fetch('https://www.fruityvice.com/api/fruit/all');
+    // Se transforma la información a un arreglo de objetos json
+    let fruits = await response.json();
+    // Se crea un arreglo vacío 
+    let highProteinFruit = [];
 
-    proteinas.array.forEach(valorProteina);
+    // Se recorre el arreglo
+    fruits.forEach(myFunction);
 
-    function valorProteina(){
-        if (protein != 0){
-        pertenece[index] = true
-    }
-        else{
-        pertenece[index] = false;
+    function myFunction(item){
+        // Se accede al contenido de proteina en la fruta y se comprueba si su valor es superior a 1
+        if (item.nutritions.protein >= 1){
+            // En caso afirmativo se añade el elemento al arreglo declarado anteriormente
+            highProteinFruit.push(item)
+        }
     }
 
-    }
-    if (index = pertenece.indexOf(true));{
-        frutasProteina = proteinas[index].name;
-    }
-    return frutasProteina
+    return highProteinFruit;
 
 };
 
